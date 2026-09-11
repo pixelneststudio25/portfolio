@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zuri, Daniel Ekeamadi</title>
+<meta name="description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zuri, an AI website builder, by Daniel Ekeamadi">
+<meta property="og:description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
+<meta property="og:image" content="../assets/danielekeamadi.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zuri, an AI website builder, by Daniel Ekeamadi">
+<meta name="twitter:description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
+<meta name="twitter:image" content="../assets/danielekeamadi.jpeg">
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-back">← Daniel Ekeamadi</a>
+    <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="wrap case-hero">
+  <span class="project-status status">Live · MVP</span>
+  <h1>Zuri, an AI website builder for business owners</h1>
+  <p class="lede">Zuri turns a short description of a business into a live, on-brand website, matching it to the right template out of 80 and writing the copy to fill it in.</p>
+  <div class="case-meta">
+    <div><h5>Role</h5><p>Solo: design, engineering, AI integration</p></div>
+    <div><h5>Stack</h5><p>Next.js, TypeScript, React, Gemini API</p></div>
+    <div><h5>Timeline</h5><p>~3 months, ongoing</p></div>
+    <div><h5>Links</h5><p><a href="https://buildzuri.com" target="_blank" rel="noopener" style="color:var(--accent)">buildzuri.com</a></p></div>
+  </div>
+</header>
+
+<section class="case-section" style="border-top:none;">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p>Zuri started as an entry for the Gemini X Prize. The brief was open: build something meaningful with the Gemini API. But the hard part wasn't the API itself, it was deciding what "building a website automatically" should actually mean. A generic AI website generator tends to produce generic, forgettable sites. I wanted Zuri to feel like it understood the business it was building for.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2>The approach</h2>
+    <p>Rather than generating layout from scratch on every request, which is slow, unpredictable, and easy to get wrong, I designed a template-matching system instead:</p>
+    <ul>
+      <li>I hand-built 80 distinct templates, each tuned to a specific business category, from food and beverage to professional services to retail.</li>
+      <li>When a business owner describes what they do, the Gemini API classifies the business and selects the template that fits best.</li>
+      <li>Gemini then generates the site copy (headlines, descriptions, calls to action) tailored to that specific business, and drops it into the chosen template.</li>
+    </ul>
+    <p>This split the problem in two: a design problem (build 80 genuinely good templates) and a matching problem (get the AI to pick and fill correctly), both far more solvable than "generate any website from nothing."</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2>Where it stands</h2>
+    <p>Zuri is live at buildzuri.com with the builder running at app.buildzuri.com. It's currently at MVP stage, validated with test users but not yet an active user base, with ongoing work to broaden template coverage and refine how well the AI matches and writes for each business.</p>
+  </div>
+</section>
+
+<div class="wrap case-nav">
+  <a href="attendance.html">← Attendance Portal</a>
+  <a href="clients.html">Client Websites →</a>
+</div>
+
+<footer class="wrap">
+  <span>© <span class="current-year"></span> Daniel Ekeamadi</span>
+  <span>Built with HTML, CSS & JavaScript</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

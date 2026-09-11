@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Management Portal, Daniel Ekeamadi</title>
+<meta name="description" content="A database-backed attendance tracker built solo for a church youth community, running on Google Sheets and Apps Script.">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Attendance Management Portal, by Daniel Ekeamadi">
+<meta property="og:description" content="A database-backed attendance tracker built solo for a church youth community, running on Google Sheets and Apps Script.">
+<meta property="og:image" content="../assets/danielekeamadi.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Attendance Management Portal, by Daniel Ekeamadi">
+<meta name="twitter:description" content="A database-backed attendance tracker built solo for a church youth community, running on Google Sheets and Apps Script.">
+<meta name="twitter:image" content="../assets/danielekeamadi.jpeg">
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-back">← Daniel Ekeamadi</a>
+    <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="wrap case-hero">
+  <span class="project-status status">Live · Internal tool</span>
+  <h1>Attendance Management Portal</h1>
+  <p class="lede">A database-backed attendance tracker built for a church youth community, replacing a paper register with weekly check-ins, member profiles, and simple analytics.</p>
+  <div class="case-meta">
+    <div><h5>Role</h5><p>Solo: design & engineering</p></div>
+    <div><h5>Stack</h5><p>HTML, CSS, JavaScript, Google Sheets + Apps Script</p></div>
+    <div><h5>Timeline</h5><p>Built and deployed independently</p></div>
+    <div><h5>Client</h5><p>Confidential, details on request</p></div>
+  </div>
+</header>
+
+<section class="case-section" style="border-top:none;">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p>The community was tracking weekly attendance on paper, slow to update, easy to lose, and impossible to get any real insight from. There was no budget for a hosted database or backend service, so the solution had to run on infrastructure that already existed and cost nothing to maintain.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2>The approach</h2>
+    <p>I built the entire interface from scratch in HTML, CSS, and JavaScript, and used Google Sheets as the database with Google Apps Script acting as the backend API. No hosting costs, no server to maintain, and a data store the organizers could still open directly if they ever needed to.</p>
+    <ul>
+      <li>Weekly attendance marking, built to be fast enough to use live during a Sunday session.</li>
+      <li>Member management: adding new members and viewing or editing existing profiles.</li>
+      <li>Lightweight analytics, turning weeks of raw check-ins into attendance trends the organizers could actually use.</li>
+    </ul>
+    <p>The main technical challenge was automating what had been a fully manual process, designing the Sheets structure and Apps Script functions so the app could read and write reliably without a traditional backend.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2>The outcome</h2>
+    <p>The portal is in active use, and attendance tracking that used to depend on a paper register and someone's memory now takes a few taps, with the data to back it up.</p>
+  </div>
+</section>
+
+<div class="wrap case-nav">
+  <a href="zuri.html">← Zuri</a>
+  <a href="clients.html">Client Websites →</a>
+</div>
+
+<footer class="wrap">
+  <span>© <span class="current-year"></span> Daniel Ekeamadi</span>
+  <span>Built with HTML, CSS & JavaScript</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>
