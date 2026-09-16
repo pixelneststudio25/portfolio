@@ -3,83 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zuri, Daniel Ekeamadi</title>
-<meta name="description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
+<title>Zuri — Daniel Ekeamadi</title>
+<meta name="description" content="An AI website generator that matches businesses to hand-built templates and generates a live site in around 10 seconds. Case study on the algorithm, the tradeoffs, and the MVP results.">
 
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-
 <meta property="og:type" content="website">
-<meta property="og:title" content="Zuri, an AI website builder, by Daniel Ekeamadi">
-<meta property="og:description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
-<meta property="og:image" content="../assets/danielekeamadi.jpeg">
+<meta property="og:title" content="Zuri — Case Study">
+<meta property="og:description" content="An AI website generator built for the Gemini X Prize — the algorithm, the tradeoffs, and the MVP results.">
+<meta property="og:image" content="https://daniel.pixelnestdev.com/assets/danielekeamadi.jpeg">
+<meta property="og:url" content="https://daniel.pixelnestdev.com/projects/zuri.html">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zuri, an AI website builder, by Daniel Ekeamadi">
-<meta name="twitter:description" content="How Zuri matches a business to one of 80 templates and writes the copy to fill it in, built solo with Next.js, TypeScript, and the Gemini API.">
-<meta name="twitter:image" content="../assets/danielekeamadi.jpeg">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles.css">
+<script>
+  (function () {
+    var stored = localStorage.getItem("theme");
+    if (stored) document.documentElement.setAttribute("data-theme", stored);
+  })();
+</script>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <nav class="nav">
   <div class="wrap">
-    <a href="../index.html" class="nav-back">← Daniel Ekeamadi</a>
-    <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+    <a href="../index.html" class="nav-logo">Daniel Ekeamadi</a>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-mobile-toggle" data-nav-toggle aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
-<header class="wrap case-hero">
-  <span class="project-status status">Live · MVP</span>
-  <h1>Zuri, an AI website builder for business owners</h1>
-  <p class="lede">Zuri turns a short description of a business into a live, on-brand website, matching it to the right template out of 80 and writing the copy to fill it in.</p>
-  <div class="case-meta">
-    <div><h5>Role</h5><p>Solo: design, engineering, AI integration</p></div>
-    <div><h5>Stack</h5><p>Next.js, TypeScript, React, Gemini API</p></div>
-    <div><h5>Timeline</h5><p>~3 months, ongoing</p></div>
-    <div><h5>Links</h5><p><a href="https://buildzuri.com" target="_blank" rel="noopener" style="color:var(--accent)">buildzuri.com</a></p></div>
+<main id="main">
+<header class="case-hero">
+  <div class="wrap">
+    <a href="../index.html#work" class="case-back">← Back to work</a>
+    <h1>An AI website generator that ships a live site in 10 seconds.</h1>
+    <p class="lede">Zuri matches a business description to the best of 80 hand-built templates, then generates the copy to fill it — turning an idea into a working website before the user finishes their coffee.</p>
+    <div class="case-meta">
+      <div><h5>Role</h5><p>Solo founder &amp; developer</p></div>
+      <div><h5>Stack</h5><p>Next.js, TypeScript, Gemini API</p></div>
+      <div><h5>Status</h5><p>MVP live, Gemini X Prize judging</p></div>
+      <div><h5>Generations</h5><p>17 since launch</p></div>
+    </div>
+    <div class="case-hero-media">
+      <div class="work-media placeholder" data-label="zuri — hero visual pending" style="aspect-ratio: 16/9; border: none; border-radius: 0;"></div>
+    </div>
   </div>
 </header>
 
-<section class="case-section" style="border-top:none;">
+<section class="case-section">
   <div class="wrap">
     <h2>The problem</h2>
-    <p>Zuri started as an entry for the Gemini X Prize. The brief was open: build something meaningful with the Gemini API. But the hard part wasn't the API itself, it was deciding what "building a website automatically" should actually mean. A generic AI website generator tends to produce generic, forgettable sites. I wanted Zuri to feel like it understood the business it was building for.</p>
+    <p>Most small businesses in Nigeria don't have a website, and the reason usually isn't cost — it's that building one properly takes a developer, a few weeks, and a back-and-forth most business owners don't have time for. Zuri exists to collapse that gap: describe the business, and get a live, well-designed website in the time it takes to describe it.</p>
   </div>
 </section>
 
 <section class="case-section">
   <div class="wrap">
-    <h2>The approach</h2>
-    <p>Rather than generating layout from scratch on every request, which is slow, unpredictable, and easy to get wrong, I designed a template-matching system instead:</p>
-    <ul>
-      <li>I hand-built 80 distinct templates, each tuned to a specific business category, from food and beverage to professional services to retail.</li>
-      <li>When a business owner describes what they do, the Gemini API classifies the business and selects the template that fits best.</li>
-      <li>Gemini then generates the site copy (headlines, descriptions, calls to action) tailored to that specific business, and drops it into the chosen template.</li>
-    </ul>
-    <p>This split the problem in two: a design problem (build 80 genuinely good templates) and a matching problem (get the AI to pick and fill correctly), both far more solvable than "generate any website from nothing."</p>
+    <h2>How it works</h2>
+    <p>A user goes through a short onboarding flow describing their business. Zuri matches that description against a library of 80 hand-built templates, selects the closest fit, and uses the Gemini API to generate copy tailored to the business — not placeholder text, not a generic mad-lib. The full pipeline, from the end of onboarding to a live URL, takes around 10 seconds.</p>
+    <div class="case-diagram">
+      <div class="work-media placeholder" data-label="pipeline diagram — onboarding → template match → generation → live site" style="aspect-ratio: 21/9; border-radius: 4px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2>The hardest decision</h2>
+    <p>The first version generated websites directly with AI, from scratch, for every request. It didn't hold up. Output quality and code structure were inconsistent, there was little real control over the result, and the API cost of generating a full site from nothing for every user was not sustainable at any real scale.</p>
+    <div class="case-tradeoff">
+      <h3>The tradeoff</h3>
+      <p>Moving to a system that matches businesses to a curated set of 80 hand-built templates and generates only the copy — not the structure — cost more deliberate upfront work and ongoing API spend per generation. In exchange, output quality and design consistency went up sharply, and the result is a site that actually looks like it was built with care, not assembled by a model guessing at layout.</p>
+    </div>
   </div>
 </section>
 
 <section class="case-section">
   <div class="wrap">
     <h2>Where it stands</h2>
-    <p>Zuri is live at buildzuri.com with the builder running at app.buildzuri.com. It's currently at MVP stage, validated with test users but not yet an active user base, with ongoing work to broaden template coverage and refine how well the AI matches and writes for each business.</p>
+    <p>Zuri is live as an MVP with 17 generations completed, and is currently in the judging window for the Gemini X Prize. The next stage of work is scaling the template library, tightening generation cost per site, and moving from MVP to a product businesses can rely on long-term.</p>
   </div>
 </section>
+</main>
 
 <div class="wrap case-nav">
-  <a href="attendance.html">← Attendance Portal</a>
-  <a href="clients.html">Client Websites →</a>
+  <a href="../index.html#work">← All work</a>
+  <a href="camp-portal.html">Camp Registration Platform →</a>
 </div>
 
 <footer class="wrap">
   <span>© <span class="current-year"></span> Daniel Ekeamadi</span>
-  <span>Built with HTML, CSS & JavaScript</span>
+  <span>daniel.pixelnestdev.com</span>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../script.js"></script>
 </body>
 </html>
