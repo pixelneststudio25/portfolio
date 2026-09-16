@@ -1,40 +1,44 @@
-/* ===================== GSAP scroll reveals ===================== */
-if (window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
+/* ===================== Theme toggle ===================== */
+(function () {
+  const root = document.documentElement;
+  const stored = localStorage.getItem("theme");
+  if (stored) root.setAttribute("data-theme", stored);
 
-  gsap.utils.toArray(".reveal").forEach((el) => {
-    gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 0.9,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-      },
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const current =
+        root.getAttribute("data-theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
     });
   });
+})();
 
-  gsap.utils.toArray(".work-item").forEach((el) => {
-    const visual = el.querySelector(".work-visual");
-    if (visual) {
-      gsap.from(visual, {
-        opacity: 0,
-        scale: 0.92,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 80%" },
-      });
-    }
-  });
+/* ===================== Mobile nav ===================== */
+(function () {
+  const toggle = document.querySelector("[data-nav-toggle]");
+  const nav = document.querySelector(".nav");
+  if (!toggle || !nav) return;
+  toggle.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.querySelectorAll(".nav-links a").forEach((a) =>
+    a.addEventListener("click", () => nav.classList.remove("open"))
+  );
+})();
 
-  gsap.from(".hero-content > *", {
+/* ===================== Single hero entrance ===================== */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (window.gsap && !prefersReducedMotion) {
+  document.documentElement.classList.add("js-ready");
+  gsap.from(".hero .reveal", {
     opacity: 0,
-    y: 30,
-    duration: 0.9,
-    stagger: 0.12,
+    y: 24,
+    duration: 0.8,
+    stagger: 0.1,
     ease: "power3.out",
-    delay: 0.2,
+    delay: 0.1,
   });
 }
 
