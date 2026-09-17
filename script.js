@@ -30,16 +30,21 @@
 /* ===================== Single hero entrance ===================== */
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (window.gsap && !prefersReducedMotion) {
-  document.documentElement.classList.add("js-ready");
-  gsap.from(".hero .reveal", {
-    opacity: 0,
-    y: 24,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: "power3.out",
-    delay: 0.1,
-  });
+if (window.gsap && typeof gsap.from === "function" && !prefersReducedMotion) {
+  const heroReveals = document.querySelectorAll(".hero .reveal");
+  if (heroReveals.length) {
+    document.documentElement.classList.add("js-ready");
+    gsap.from(heroReveals, {
+      opacity: 0,
+      y: 24,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power3.out",
+      delay: 0.1,
+      clearProps: "opacity,transform",
+      onComplete: () => document.documentElement.classList.remove("js-ready"),
+    });
+  }
 }
 
 /* ===================== Footer year ===================== */
