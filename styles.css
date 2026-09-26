@@ -319,8 +319,8 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   gap: 8px;
   align-items: center;
   width: 100%;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 32px;
+  padding-bottom: 40px;
 }
 .hero-copy { max-width: 560px; }
 .hero-eyebrow {
@@ -380,6 +380,51 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   transition: border-color 0.15s ease, transform 0.15s ease, color 0.15s ease;
 }
 .btn-secondary:hover { color: var(--fg); border-color: var(--border); transform: translateY(-2px); }
+.btn-secondary {
+  position: relative;
+  border: 1px solid transparent; /* keep existing layout spacing */
+  color: var(--fg-muted);
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  font-size: 0.94rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+  overflow: visible;
+}
+.btn-secondary span {
+  position: relative;
+  z-index: 1;
+}
+.btn-secondary:hover { color: var(--fg); transform: translateY(-2px); }
+
+.btn-trace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.btn-trace rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 420; /* adjust to your button's actual perimeter */
+  stroke-dashoffset: 420;
+  animation: trace-loop 5.5s ease-in-out infinite;
+}
+.btn-secondary:hover .btn-trace rect {
+  stroke: var(--accent); /* no longer needs to change on hover, kept for clarity */
+}
+
+@keyframes trace-loop {
+  0%   { stroke-dashoffset: 420; opacity: 0; }
+  35%  { stroke-dashoffset: 0; opacity: 1; }   /* fully drawn in */
+  70%  { stroke-dashoffset: 0; opacity: 1; }   /* hold, fully visible, no movement */
+  100% { stroke-dashoffset: 0; opacity: 0; }   /* fades out in place, no erasing trace */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-trace rect { animation: none; stroke-dashoffset: 0; opacity: 0.5; }
+}
 
 /* Stats row now lives visually below the fold as a natural scroll
    continuation, not squeezed into the same viewport as the headline —
@@ -785,7 +830,7 @@ footer {
 @media (max-width: 640px) {
   :root { --gutter: 20px; }
   .nav .wrap { height: 64px; }
-  .hero { padding-top: 24px; padding-bottom: 56px; }
+  .hero { padding-top: 10px; padding-bottom: 56px; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
   section { padding: 64px 0; }
@@ -821,4 +866,188 @@ footer {
 
 .work-media.placeholder::before {
   z-index: 0; /* pushes the striped placeholder behind the image once it loads */
+}
+
+/* ---------- Nav overlay sync (case-study pages) ---------- */
+/* Same rules as index.html's .nav-overlay-* — copy your existing
+   .nav-overlay, .nav-overlay-brand, .nav-overlay-close, .nav-overlay-links,
+   .nav-overlay-links a, .nav-overlay-links .idx, .nav-overlay-footer,
+   .nav-overlay-icon rules here if styles.css is shared across pages (it
+   already is, via <link rel="stylesheet" href="../styles.css">), so no
+   duplicate rules needed — this file already covers zuri.html since both
+   pages load the same stylesheet. */
+
+/* ---------- Pipeline diagram (case study) ---------- */
+/* Mobile-first: vertical layout, safe grid-based alignment (no absolute
+   positioning / negative margins, so nothing can crop at narrow widths).
+   Desktop (900px+): switches to horizontal via a separate rule block. */
+
+.pipeline-diagram {
+  position: relative;
+  margin-top: 48px;
+  padding: 8px 0;
+  overflow: visible;
+  padding: 24px 0 8px 32px; /* added 32px left padding — adjust to taste */
+}
+
+.pipeline-track {
+  position: absolute;
+  top: 28px;
+  bottom: 8px;
+  left: 44px; /* aligns with the 24px dot column's center */
+  width: 2px;
+}
+.pipeline-line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--border);
+}
+.pipeline-glow {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px 3px rgba(255,91,61,0.7);
+  opacity: 0;
+}
+.pipeline-diagram.in-view .pipeline-glow {
+  animation: pipeline-travel-vertical 2.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pipeline-travel-vertical {
+  0%   { top: 0%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: calc(100% - 8px); opacity: 0; }
+}
+
+.pipeline-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.pipeline-stage {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 0 20px;
+  align-items: center;
+}
+
+.pipeline-dot {
+  position: relative;
+  justify-self: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+.pipeline-dot svg {
+  width: 28px;
+  height: 28px;
+}
+
+.pipeline-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  transition: color 0.4s ease;
+  padding-left: 5px;
+}
+
+.pipeline-stage.lit .pipeline-dot {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 10px 2px rgba(255,91,61,0.5);
+}
+.pipeline-stage.lit .pipeline-label {
+  color: var(--fg);
+}
+.pipeline-stage-final.lit .pipeline-dot {
+  box-shadow: 0 0 16px 4px rgba(255,91,61,0.65);
+}
+
+/* ---------- Desktop: horizontal layout ---------- */
+@media (min-width: 900px) {
+  .pipeline-diagram {
+    padding: 24px 0 8px;
+  }
+
+  .pipeline-stages {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  /* Track spans from the center of the first dot to the center of the
+     last dot: each stage takes 1/5 of the row width, so the first dot's
+     center sits at half a stage-width from the left, and the last dot's
+     center sits at half a stage-width from the right. */
+  .pipeline-track {
+    top: 70px; /* dot center: 20px stages padding-top + 20px (half of 40px dot height) */
+    left: calc(100% / 10);   /* half of one stage (1/5 width) = 10% */
+    right: calc(100% / 10);
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .pipeline-glow {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  .pipeline-diagram.in-view .pipeline-glow {
+    animation: pipeline-travel-horizontal 2.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  @keyframes pipeline-travel-horizontal {
+    0%   { left: 0%; opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { left: calc(100% - 8px); opacity: 0; }
+  }
+
+  .pipeline-stage {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 14px 0;
+    flex: 1;
+    position: relative;
+  }
+  .pipeline-dot {
+    width: 54px;
+    height: 54px;
+  }
+  .pipeline-dot svg {
+    width: 28px;
+    height: 28px;
+  }
+  .pipeline-label {
+    margin-top: 54px; /* clears the 40px dot sitting in normal flow above it */
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
+.pipeline-dot {
+  cursor: default;
+}
+.pipeline-stage.lit .pipeline-dot:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 18px 5px rgba(255,91,61,0.75);
+}
+.pipeline-stage:not(.lit) .pipeline-dot:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
