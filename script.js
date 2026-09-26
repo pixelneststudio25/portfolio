@@ -70,40 +70,49 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (window.gsap && typeof gsap.from === "function" && !prefersReducedMotion) {
-  const heroReveals = document.querySelectorAll(".hero .reveal");
+  const heroPhoto = document.querySelector(".hero-photo");
+  const eyebrow = document.querySelector(".hero-eyebrow");
   const words = document.querySelectorAll(".hero h1 .word span");
+  const lede = document.querySelector(".hero p.lede");
+  const actionButtons = document.querySelectorAll(".hero-actions a");
+  const statItems = document.querySelectorAll(".hero-stat");
 
-  if (heroReveals.length || words.length) {
+  const hasContent =
+    heroPhoto || eyebrow || words.length || lede || actionButtons.length || statItems.length;
+
+  if (hasContent) {
     document.documentElement.classList.add("js-ready");
 
-    const tl = gsap.timeline({
-      onComplete: () => document.documentElement.classList.remove("js-ready"),
-    });
-
-    if (words.length) {
-      tl.from(words, {
-        y: "110%",
-        duration: 0.7,
-        stagger: 0.045,
-        ease: "power3.out",
-        clearProps: "transform",
+    try {
+      const tl = gsap.timeline({
+        onComplete: () => document.documentElement.classList.remove("js-ready"),
       });
+
+      if (heroPhoto) {
+        tl.from(heroPhoto, { opacity: 0, scale: 0.85, duration: 0.6, ease: "power2.out" }, 0);
+      }
+      if (eyebrow) {
+        tl.from(eyebrow, { opacity: 0, y: 14, duration: 0.55, ease: "power2.out", clearProps: "opacity,transform" }, heroPhoto ? "-=0.25" : 0);
+      }
+      if (words.length) {
+        tl.from(words, { y: "110%", duration: 0.7, stagger: 0.045, ease: "power3.out", clearProps: "transform" }, eyebrow ? "-=0.25" : (heroPhoto ? "-=0.2" : 0));
+      }
+      if (lede) {
+        tl.from(lede, { opacity: 0, y: 18, duration: 0.6, ease: "power2.out", clearProps: "opacity,transform" }, words.length ? "-=0.35" : "-=0.15");
+      }
+      if (actionButtons.length) {
+        tl.from(actionButtons, { opacity: 0, y: 16, scale: 0.96, duration: 0.5, stagger: 0.08, ease: "back.out(1.6)", clearProps: "opacity,transform" }, "-=0.3");
+      }
+      if (statItems.length) {
+        tl.from(statItems, { opacity: 0, y: 20, duration: 0.6, stagger: 0.09, ease: "power2.out", clearProps: "opacity,transform" }, "-=0.2");
+      }
+    } catch (err) {
+      // fail safe: never leave content permanently invisible
+      document.documentElement.classList.remove("js-ready");
+      console.error("Hero entrance animation failed:", err);
     }
-    tl.from(
-      heroReveals,
-      {
-        opacity: 0,
-        y: 20,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: "power3.out",
-        clearProps: "opacity,transform",
-      },
-      words.length ? "-=0.4" : 0
-    );
   }
 }
-
 /* ===================== Scroll reveals (sections below hero) ===================== */
 if (window.gsap && window.ScrollTrigger && !prefersReducedMotion) {
   gsap.registerPlugin(ScrollTrigger);
@@ -617,4 +626,36 @@ document.querySelectorAll(".current-year").forEach((el) => {
     ctx.fillStyle = "#0a0a0a";
     ctx.fillRect(0, 0, w, h);
   }
+})();
+
+/* ===================== Pipeline diagram (case study) ===================== */
+(function () {
+  const diagram = document.querySelector("[data-pipeline]");
+  if (!diagram || !window.IntersectionObserver) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return; // CSS fallback already lights everything, no JS needed
+
+  const stages = diagram.querySelectorAll(".pipeline-stage");
+  let played = false;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !played) {
+          played = true;
+          diagram.classList.add("in-view");
+          // light each stage as the traveling glow passes it — timed
+          // against the glow's 2.6s top-to-bottom travel
+          const travelDuration = 2600;
+          const segmentDuration = travelDuration / (stages.length - 1);
+          stages.forEach((stage, i) => {
+            setTimeout(() => stage.classList.add("lit"), i * segmentDuration);
+          });
+          observer.unobserve(diagram);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+  observer.observe(diagram);
 })();
