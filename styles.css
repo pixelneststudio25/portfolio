@@ -785,7 +785,7 @@ footer {
 @media (max-width: 640px) {
   :root { --gutter: 20px; }
   .nav .wrap { height: 64px; }
-  .hero { padding-top: 32px; padding-bottom: 56px; }
+  .hero { padding-top: 24px; padding-bottom: 56px; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
   section { padding: 64px 0; }
