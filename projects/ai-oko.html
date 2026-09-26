@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-OKO | Daniel Ekeamadi</title>
+<meta name="description" content="An ecommerce store for a Nigerian fabrics, shoes and bags business, built to sell beyond geographical limitations with WhatsApp-based checkout and a CMS-backed catalog of 50+ products.">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-OKO | Case Study">
+<meta property="og:description" content="An ecommerce store built to sell fabrics, shoes and bags beyond geographical limitations, with WhatsApp checkout and a 50+ product catalog.">
+<meta property="og:image" content="https://daniel.pixelnestdev.com/assets/og-image.png">
+<meta property="og:url" content="https://daniel.pixelnestdev.com/projects/ai-oko.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<canvas id="dust-canvas"></canvas>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo">Daniel Ekeamadi</a>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="../index.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-mobile-toggle" data-nav-toggle aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-overlay">
+  <button class="nav-overlay-close" data-nav-close aria-label="Close menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <span class="nav-overlay-brand">Daniel Ekeamadi</span>
+
+  <div class="nav-overlay-links">
+    <a href="../index.html#about"><span class="idx">01</span>About</a>
+    <a href="../index.html#work"><span class="idx">02</span>Work</a>
+    <a href="../index.html#services"><span class="idx">03</span>Services</a>
+    <a href="../index.html#contact"><span class="idx">04</span>Contact</a>
+  </div>
+  <div class="nav-overlay-footer">
+    <a href="mailto:daniel@pixelnestdev.com" class="nav-overlay-icon" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6l9 7 9-7M3 6h18v12H3V6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="https://wa.me/2349166535077" class="nav-overlay-icon" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.03.08-1.66-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.02.58.45.22.53.75 1.82.82 1.95.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.11 1.31.26.13.4.11.55-.07.15-.18.64-.75.81-1.01.17-.26.34-.22.57-.13.24.09 1.5.71 1.76.84.26.13.43.2.5.31.06.11.06.64-.16 1.26z"/></svg>
+    </a>
+    <a href="https://github.com/pixelneststudio25" class="nav-overlay-icon" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 007.87 10.93c.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.68 5.4-5.24 5.69.42.36.78 1.07.78 2.16v3.2c0 .32.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/daniel-ekeamadi-2222aa3b5/" class="nav-overlay-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.06 2.06 0 11.02-4.12 2.06 2.06 0 01-.02 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+    <a href="https://instagram.com/danniel.10.8" class="nav-overlay-icon" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+</div>
+
+<main id="main">
+<header class="case-hero">
+  <div class="wrap">
+    <a href="../index.html#work" class="case-back">← Back to work</a>
+    <h1>An ecommerce store that sells past geography.</h1>
+    <p class="lede">AI-OKO sells fabrics, shoes and bags to customers who never had to be anywhere near the shop, with a checkout that hands off to WhatsApp so every order becomes a real conversation, not just a transaction.</p>
+    <div class="case-meta">
+      <div><h5>Role</h5><p>Solo developer</p></div>
+      <div><h5>Stack</h5><p>HTML, CSS, JavaScript, Decap CMS</p></div>
+      <div><h5>Status</h5><p>Live</p></div>
+      <div><h5>Catalog</h5><p>50+ products listed</p></div>
+    </div>
+    <div class="case-hero-media">
+      <div class="work-media placeholder" data-label="ai-oko — screenshot pending">
+        <img src="../assets/ai-oko.png" alt="AI-OKO ecommerce store screenshot"
+             onerror="this.style.display='none'"
+             loading="lazy">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2 class="scroll-reveal">The problem</h2>
+    <p class="scroll-reveal">A fabrics, shoes and bags business is limited by geography the moment it depends on foot traffic: customers can only buy what they can physically walk in and see. AI-OKO exists to remove that ceiling, so the same catalog that used to sell to one neighbourhood can sell to anyone who can open a browser.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2 class="scroll-reveal">How it works</h2>
+    <p class="scroll-reveal">Customers browse a full storefront of over 50 products, add items to a cart, and check out; but instead of ending at a payment form, checkout hands off to WhatsApp. The order details carry over automatically, and payment and delivery get worked out directly with the business. On the other side, the catalog itself is managed through a CMS admin panel, so new products, prices, and stock go live without anyone touching code.</p>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2 class="scroll-reveal">The hardest decision</h2>
+    <p class="scroll-reveal">A standard payment gateway integration was the obvious default, but it wasn't the right fit here. This business isn't just trying to process transactions, it's trying to build relationships and grow a real reputation with its customers, and a fabrics/shoes/bags purchase often comes with questions about fit, fabric, or delivery that a checkout form can't answer.</p>
+    <div class="case-tradeoff scroll-reveal">
+      <h3>The tradeoff</h3>
+      <p>Routing checkout through WhatsApp instead of a payment gateway trades away one-click automated payment for something the business needed more: low complexity to build and maintain, and a direct conversation with every customer at the exact moment they're ready to buy. It's a small deliberate step back from "fully automated" in exchange for the kind of precise, personal delivery conversation that actually earns repeat customers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="case-section">
+  <div class="wrap">
+    <h2 class="scroll-reveal">Where it stands</h2>
+    <p class="scroll-reveal">AI-OKO is live and finished, running a catalog of over 50 products with the business managing its own inventory day to day through the CMS panel, no developer involvement required to keep it running.</p>
+  </div>
+</section>
+</main>
+
+<div class="wrap case-nav">
+  <a href="../index.html#work">← All work</a>
+</div>
+
+<footer class="wrap">
+  <span>© <span class="current-year"></span> Daniel Ekeamadi</span>
+  <span>daniel.pixelnestdev.com</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>
